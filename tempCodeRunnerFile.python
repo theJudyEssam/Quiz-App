@@ -1,0 +1,43 @@
+import numpy as np
+
+node_string = input("Enter the number of nodes: ")
+node = int(node_string)
+print(node)
+print("hello")
+# sources = int(input("Enter the number of current sources: "))
+# resistor_values = [] 
+
+# A1 = np.zeros((node,node))
+
+
+# for i in range(node):
+#     res = float(input(f"Enter the resistance at node {i+1}: "))
+#     values = res.split()
+#     values = list(map(int, values))
+#     resistor_values.append(values)
+#     A1[i, i] = 1/res[i]
+    
+# print(values)
+# I = np.zeros(node)
+# for i in range(node):
+#     for j in range(node):
+#         if i != j:
+#             I[i] += sources[j]
+#         I[i] += -sources[i]
+
+
+# for i in range(sources):
+#     node1 = int(input(f"Enter the positive node for current source {i+1}: "))
+#     node2 = int(input(f"Enter the negative node for current source {i+1}: "))
+#     current = float(input(f"Enter the current for current source {i+1}: "))
+#     A1[node1-1, node1-1] += 1
+#     A1[node2-1, node2-1] += 1
+  
+
+
+# result = np.linalg.solve(A1, I)
+
+
+# print("Nodal voltages:")
+# for i in range(node):
+#     print(f"Node {i+1}: {result[i, 0]:.2f} V")
