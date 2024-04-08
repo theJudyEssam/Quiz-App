@@ -16,6 +16,11 @@ async function fetch_data() {
     try {
         const response = await fetch(APIURL);
         if (!response.ok) {
+            if (response.status === 429) {
+                
+                await new Promise(resolve => setTimeout(resolve, 1000)); 
+                return fetch_data(); 
+            }
             throw new Error(`Failed to fetch data. Status: ${response.status}, ${response.statusText}`);
         }
         count++;
@@ -38,9 +43,7 @@ function decodeHtmlEntities(text) {
     const element = document.createElement("div");
     element.innerHTML = text;
     return element.textContent || element.innerText;
-} // i got this from the internet lol
-
-
+}
 
 async function load_question(){
 
@@ -99,7 +102,7 @@ $(".ques").on('click', function() {
 function play_again(){
     console.log(score)
     $(".question").css("display", "none")
-    $(".final-results").css("display", "block")
+    $(".final-results").css("display", "display")
     const final = document.getElementsByClassName("f_score")[0]
     final.innerText = scoring
     console.log(final)
