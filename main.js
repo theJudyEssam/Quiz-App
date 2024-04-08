@@ -5,7 +5,13 @@ let score = document.getElementById("score-pts")
 const buttons = $(".ques")
 let count = 0; //counts the num of questions
 let correct_answer = null; //since i shall use this in other functions
-
+let scoreIncremented = false
+const start_button = $("#intro-button")
+$("#intro-button").on('click', function(){
+    load_question()
+    $("#intro-button").css("display", "none")
+    $("#intro-text").css("display", "none")
+})
 
 async function fetch_data() {
     try {
@@ -29,8 +35,10 @@ function decodeHtmlEntities(text) {
 } // i got this from the internet lol
 
 async function load_question(){
-       
-        $(".ques").css("background-color", ""); 
+    $(".question").css("display", "block")
+
+
+      $(".ques").css("background-color", ""); 
 
         const random_question = await fetch_data()
         $("#question-area").text(decodeHtmlEntities(random_question[0].question))
@@ -45,58 +53,27 @@ async function load_question(){
         for (let i = 0; i < incorrects.length; i++) { // Loop over incorrect answers
             $(".ques").eq((random_choice + i + 1) % 4).html(incorrects[i]); // Start from next position after correct answer
         }
+        scoreIncremented = false;
 }
 
-load_question()
-
-
-// function check_answer(){
-//     let answer = null;
-
-//     // [...buttons].forEach(button => {
-//     //     button.addEventListener('click', event => {
-//     //         const clickedButton = event.target;
-//     //         // console.log("the correct session: ", correct_ans)
-//     //         // console.log( clickedButton.textContent);
-//     //         answer = clickedButton.textContent
-//     //         if (answer == correct_answer){
-//     //             // console.log("correct")
-//     //             // console.log("the score is "+ score.innerText);
-//     //             score.innerText++;
-//     //             try{
-//     //             load_question()
-//     //             score.innerText++;
-//     //              }
-//     //             catch(error){
-//     //                 console.log("errrrrorrrrr")
-//     //             score.innerText--;
-//     //             load_question()
-//     //             }
-//     //         }
-//     //         else{
-//     //             // console.log("incorrect")
-//     //             // console.log("the score is "+ score);
-//     //             load_question()
-//     //         }})});
-
-
-//     // buttons.array.forEach(element => {
-//     //     element.addEventListener('click', event =>{
-//     //         let clicked= event.target;
-//     //         console.log(clicked)
-//     //     })
-//     // });
-
-// }
 
 $(".ques").on('click', function() {
     const selectedAnswer = $(this).text();
-    if (selectedAnswer === correct_answer) {
-        $(this).css("background-color", "green");
+    if (selectedAnswer === correct_answer && !scoreIncremented) {
+        if (selectedAnswer === correct_answer){
+        $(this).css("background-color", "green");}
         score.innerText++;
+        scoreIncremented = true; 
     } else {
-        $(this).css("background-color", "red");
+        if (selectedAnswer === correct_answer){
+        $(this).css("background-color", "green");}
+        else{
+        $(this).css("background-color", "red");}
     }
-    load_question()// Load next question after 1 second
+    
+    setTimeout(function() {
+        load_question();
+        
+    }, 500); // Load next question after 1 second
 });
 
