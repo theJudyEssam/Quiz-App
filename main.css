@@ -172,3 +172,41 @@ div{
     border-radius: 1rem;
     border: none;
   }
+
+
+  .final-results{
+    background: #350235;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+  }
+
+  .final-results span{
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    background: #350235;
+  }
+
+  .final-results button{
+    background: #350235;
+    background-color: white;
+    padding: 0.3rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 1rem;
+  }
+
+
+  .count{
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+  }
+  .count span{
+    background: #350235;
+    color: white;
+    font-weight: 600;
+  }

@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <!-- <script defer src='main.js'></script> -->
+    <script defer src='main.js'></script>
 </head>
 <body>
    
@@ -17,15 +17,17 @@
     <div class="quizbox">
         <div class="header">
             <h1>General Knowledge Quiz</h1>
-            <h2 id="intro-text"> Are you ready to test your knowledge?</h2>
-            <button id="intro-button">Start Trivia</button>
+            <h2  id="intro-text"> Are you ready to test your knowledge?</h2>
+            <button  id="intro-button">Start Trivia</button>
         </div>
           
         <div style="display: none;" class="question">
         <h1 id="question-area"></h1>
-        <!-- <div class="questions_left">
-            <span>12</span><span>/12</span></div>
-    </div> -->
+           <div class="count">
+            <span id="counter">1</span>
+            <span>/</span>
+            <span>12</span>
+           </div>
         <div  class="buttons">
             <button id="question-1" class="ques">Answer One</button>
             <button id="question-2"  class="ques">Answer Two</button>
@@ -33,13 +35,23 @@
             <button id="question-4" class="ques">Answer Four</button>
         </div>
      
-        <div style="display: none;" class="scoring">
+        <div class="scoring">
             <span>Score: </span>
             <span id="score-pts">0</span>
         </div>
-    </div></section>
+    </div>
+
+    <div style="display: none;" class="final-results">
+        <div class="final_score">
+        <span>Your final result is: </span>
+        <span class="f_score"></span></div>
+        <button class="play_again">Play Again</button>
+    </div>
 
 
-    <!-- <script defer src='main.js'></script> -->
+</section>
+
+
+    <script defer src='main.js'></script>
 </body>
 </html>

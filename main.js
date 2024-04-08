@@ -2,16 +2,16 @@
 
 let APIURL = 'https://opentdb.com/api.php?amount=50&category=9&type=multiple'  // this is the API URL
 let score = document.getElementById("score-pts")
+let scoring= 0;
 const buttons = $(".ques")
-let count = 0; //counts the num of questions
+let count = 11; //counts the num of questions
 let correct_answer = null; //since i shall use this in other functions
 let scoreIncremented = false
 const start_button = $("#intro-button")
-$("#intro-button").on('click', function(){
-    load_question()
-    $("#intro-button").css("display", "none")
-    $("#intro-text").css("display", "none")
-})
+
+let counter = document.getElementById('counter')
+
+
 
 async function fetch_data() {
     try {
@@ -19,6 +19,15 @@ async function fetch_data() {
         if (!response.ok) {
             throw new Error(`Failed to fetch data. Status: ${response.status}, ${response.statusText}`);
         }
+        count++;
+        counter.innerText = count
+        
+    if(count > 12){
+      play_again()
+
+    }
+
+
         const data = await response.json();
         return data.results;
     } catch (error) {
@@ -34,7 +43,13 @@ function decodeHtmlEntities(text) {
     return element.textContent || element.innerText;
 } // i got this from the internet lol
 
+
+
 async function load_question(){
+
+
+    $("#intro-button").css("display", "none")
+    $("#intro-text").css("display", "none")
     $(".question").css("display", "block")
 
 
@@ -57,23 +72,47 @@ async function load_question(){
 }
 
 
+$("#intro-button").on('click', load_question)
+
+
 $(".ques").on('click', function() {
     const selectedAnswer = $(this).text();
     if (selectedAnswer === correct_answer && !scoreIncremented) {
         if (selectedAnswer === correct_answer){
         $(this).css("background-color", "green");}
         score.innerText++;
+        scoring++;
         scoreIncremented = true; 
     } else {
         if (selectedAnswer === correct_answer){
         $(this).css("background-color", "green");}
         else{
         $(this).css("background-color", "red");}
-    }
     
+    }
+  
     setTimeout(function() {
         load_question();
         
     }, 500); // Load next question after 1 second
 });
 
+
+
+function play_again(){
+    console.log(score)
+    $(".question").css("display", "none")
+    $(".final-results").css("display", "block")
+    const final = document.getElementsByClassName("f_score")[0]
+    final.innerText = scoring
+    console.log(final)
+    $(".play_again").on('click', function(){
+        $(".play_again").css("display", "none")
+        $(".final-results").css("display", "none")
+        $("#intro-button").css("display", "block")
+        $("#intro-text").css("display", "block")
+        count = 0;
+        score.innerText = 0;
+    })
+ 
+}
