@@ -42,7 +42,7 @@ body{
 .header h1 {
     background: rgb(44, 15, 160);
     background-color: #350235;
-    font-size: 16px;
+    font-size: 35px;
     text-align: center;
     color: aliceblue;
     padding-bottom: 9px;
@@ -156,11 +156,11 @@ div{
   }
 
 
-  #intro-text{
+  #intro-text {
     background: #350235;
     color: white;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
     margin-top: 1rem;
   }
 

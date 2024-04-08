@@ -4,11 +4,10 @@ let APIURL = 'https://opentdb.com/api.php?amount=50&category=9&type=multiple'  /
 let score = document.getElementById("score-pts")
 let scoring= 0;
 const buttons = $(".ques")
-let count = 11; //counts the num of questions
+let count = 0; //counts the num of questions
 let correct_answer = null; //since i shall use this in other functions
 let scoreIncremented = false
 const start_button = $("#intro-button")
-
 let counter = document.getElementById('counter')
 
 
@@ -21,16 +20,14 @@ async function fetch_data() {
         }
         count++;
         counter.innerText = count
-        
-    if(count > 12){
-      play_again()
-
-    }
-
-
+            
+        if(count > 12){
+        play_again()
+        }
         const data = await response.json();
         return data.results;
-    } catch (error) {
+    } 
+    catch (error) {
         console.error("Error fetching data:  ", error);
         throw error; 
     }
