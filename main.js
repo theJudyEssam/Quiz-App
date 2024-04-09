@@ -102,7 +102,7 @@ $(".ques").on('click', function() {
 function play_again(){
     console.log(score)
     $(".question").css("display", "none")
-    $(".final-results").css("display", "display")
+    $(".final-results").css("display", "flex")
     const final = document.getElementsByClassName("f_score")[0]
     final.innerText = scoring
     console.log(final)
