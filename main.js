@@ -1,6 +1,6 @@
+let APIURL = 'https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple'
 
-
-let APIURL = 'https://opentdb.com/api.php?amount=50&category=9&type=multiple'  // this is the API URL
+//let APIURL = 'https://opentdb.com/api.php?amount=50&category=9&type=multiple'  // this is the API URL
 let score = document.getElementById("score-pts")
 let scoring= 0;
 const buttons = $(".ques")
